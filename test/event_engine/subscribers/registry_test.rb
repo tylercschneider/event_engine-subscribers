@@ -18,6 +18,10 @@ module EventEngine
       test "returns an empty array for an event with no subscribers" do
         assert_equal [], Registry.subscribers_for(:never_registered)
       end
+
+      test "returns an empty array for a nil event name" do
+        assert_equal [], Registry.subscribers_for(nil)
+      end
     end
   end
 end
