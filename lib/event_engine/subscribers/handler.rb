@@ -4,7 +4,10 @@ module EventEngine
       HANDLED_PROCESS_TYPES = [ :inline, :background ].freeze
 
       def call(event)
-        handles?(event)
+        return unless handles?(event)
+
+        Registry.subscribers_for(event.event_name).each { |subscriber| subscriber.new.handle(event) }
+        event
       end
 
       def handles?(event)
