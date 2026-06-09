@@ -8,6 +8,12 @@ module EventEngine
 
         assert Handler.new.handles?(event)
       end
+
+      test "handles a :background event" do
+        event = EventEngine::Event.new(process_type: :background)
+
+        assert Handler.new.handles?(event)
+      end
     end
   end
 end
