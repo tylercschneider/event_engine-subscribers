@@ -21,6 +21,14 @@ module EventEngine
       def self.subscribes_to(event_name)
         Registry.register(event_name, self)
       end
+
+      # Handles a dispatched event. Subclasses must override this.
+      #
+      # @param event [Object] the dispatched event
+      # @raise [NotImplementedError] if the subclass does not implement it
+      def handle(event)
+        raise NotImplementedError, "#{self.class} must implement #handle"
+      end
     end
   end
 end

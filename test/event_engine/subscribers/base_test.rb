@@ -14,6 +14,14 @@ module EventEngine
 
         assert_includes Registry.subscribers_for(:cow_fed), subscriber
       end
+
+      test "handle raises NotImplementedError until a subclass implements it" do
+        subscriber = Class.new(Base)
+
+        assert_raises(NotImplementedError) do
+          subscriber.new.handle(:any_event)
+        end
+      end
     end
   end
 end
