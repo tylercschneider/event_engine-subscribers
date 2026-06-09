@@ -4,7 +4,7 @@ module EventEngine
       HANDLED_PROCESS_TYPES = [ :inline, :background ].freeze
 
       def call(event)
-        return unless handles?(event)
+        handles?(event)
       end
 
       def handles?(event)
