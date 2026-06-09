@@ -8,4 +8,10 @@ class HandlerRegistrationTest < ActiveSupport::TestCase
 
     assert registered
   end
+
+  test "the core bus can dispatch an event to the registered handler" do
+    event = EventEngine::Event.new(process_type: :inline)
+
+    assert_nothing_raised { EventEngine.dispatch(event) }
+  end
 end
