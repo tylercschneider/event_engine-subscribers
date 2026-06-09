@@ -3,7 +3,17 @@ require "test_helper"
 module EventEngine
   module Subscribers
     class HandlerTest < ActiveSupport::TestCase
+      include ActiveJob::TestHelper
+
       teardown { Registry.clear! }
+
+      test "enqueues a job for a :background event" do
+        event = EventEngine::Event.new(event_name: :cow_fed, process_type: :background)
+
+        assert_enqueued_with(job: DispatchSubscribersJob) do
+          Handler.new.call(event)
+        end
+      end
 
       test "runs subscribers synchronously for an :inline event" do
         handled = []
