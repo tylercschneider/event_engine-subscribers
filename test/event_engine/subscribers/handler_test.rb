@@ -14,6 +14,12 @@ module EventEngine
 
         assert Handler.new.handles?(event)
       end
+
+      test "does not handle a :durable event" do
+        event = EventEngine::Event.new(process_type: :durable)
+
+        assert_not Handler.new.handles?(event)
+      end
     end
   end
 end
