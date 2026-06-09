@@ -5,22 +5,25 @@ Gem::Specification.new do |spec|
   spec.version     = EventEngine::Subscribers::VERSION
   spec.authors     = [ "tylercschneider" ]
   spec.email       = [ "tylercschneider@gmail.com" ]
-  spec.homepage    = "TODO"
-  spec.summary     = "TODO: Summary of EventEngine::Subscribers."
-  spec.description = "TODO: Description of EventEngine::Subscribers."
+  spec.homepage    = "https://github.com/tylercschneider/event_engine-subscribers"
+  spec.summary     = "In-app subscriber execution for EventEngine"
+  spec.description = "The subscriber layer for EventEngine: runs in-app subscribers for events whose process_type is :inline or :background. Registers a handler with the core bus and self-selects those events. Depends on event_engine for event definitions and dispatch."
   spec.license     = "MIT"
 
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the "allowed_push_host"
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
+  spec.required_ruby_version = ">= 3.2.0"
+
+  spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
-  spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
+  spec.metadata["source_code_uri"] = spec.homepage
+  spec.metadata["changelog_uri"] = "https://github.com/tylercschneider/event_engine-subscribers/blob/main/CHANGELOG.md"
+  spec.metadata["bug_tracker_uri"] = "https://github.com/tylercschneider/event_engine-subscribers/issues"
+  spec.metadata["documentation_uri"] = "https://github.com/tylercschneider/event_engine-subscribers#readme"
 
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
     Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   end
 
-  spec.add_dependency "rails", ">= 8.1.3"
+  spec.add_dependency "rails", ">= 7.1.6", "< 9"
+  spec.add_dependency "event_engine"
 end
