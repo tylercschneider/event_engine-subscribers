@@ -1,3 +1,5 @@
+require "rails"
+
 module EventEngine
   module Subscribers
     class Engine < ::Rails::Engine
