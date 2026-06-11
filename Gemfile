@@ -13,6 +13,8 @@ else
   gem "event_engine", github: "tylercschneider/event_engine"
 end
 
+gem "the_local", github: "tylercschneider/the_local"
+
 gem "puma"
 
 gem "sqlite3"
